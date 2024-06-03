@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
   
 <!-- Mirrored from fanfamousity.com/vote-2/fashion-group--dIjo1IWPff by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 21:13:21 GMT -->
